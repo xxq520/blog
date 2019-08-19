@@ -1,0 +1,324 @@
+^(([+]|[0]{2})([\\d]{1,3})([\\s-]{0,1}))?([\\d]{10})$//账号的正则判断
+
+/^[A-Za-z]+[0-9]+[A-Za-z0-9]*|[0-9]+[A-Za-z]+[A-Za-z0-9]*$/g //密码的正则判断
+
+音乐接口
+https://messoer.github.io/mess-api-doc/#/
+
+
+https://segmentfault.com/a/1190000018738792?utm_source=tag-newest
+
+node允许跨域
+http.createServer((req,res)=>{
+    //设置允许跨域的域名，*代表允许任意域名跨域
+    res.setHeader("Access-Control-Allow-Origin","*");
+    //跨域允许的header类型
+    res.setHeader("Access-Control-Allow-Headers","Content-type,Content-Length,Authorization,Accept,X-Requested-Width");
+    //跨域允许的请求方式
+    res.setHeader("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+    //设置响应头信息
+    res.setHeader("X-Powered-By",' 3.2.1')
+    //让options请求快速返回
+    if(req.method == "OPTIONS"){return res.end();}
+    }
+}).listen(3000);
+
+
+13560145523
+
+ngrok
+
+jquery移出所有的元素内容
+$(item).empty().append('<li>插入</li>')//链式调用的写法，表示先清空所有的元素内容再插入li元素
+
+加载完成就调用某个方法jquery写法
+$(window).trigger('resize');//这条语句表示调用一次winsow的resize事件
+
+vue的滚动加载更多插件
+vue-infinite-scroll
+
+a标签颜色快速生成
+http://blog.koalite.com/bbg/
+
+
+uniapp
+
+前端的资源库
+http://f2er.club/
+
+//往数据库中数据中的数组插入一个元素
+var whereData = {"_id":id};
+var arr=data;
+var obj={"name":"匿名评论者","commentcContent":comment,"timer":new Date().toLocaleString().slice(0,-2)}
+		var updateDat = {$push:{"comment":obj}}; //如果不用$set，替换整条数据
+		listModel.updateOne(whereData, updateDat, function(error, result){
+
+//往查询到的id数据修改一条新的id同级数据
+var whereData={"_id":id};
+	var updateDat={$push:{"_id":id,"zan":num+1}};
+	listModel.updateOne(whereData, updateDat, function(error, result){
+
+
+react项目打包部署上线完毕后，刷新报错404
+只需要把原来的BrowserRouter替换成HashRouter,这样所有的请求都会定位在index.html页面，服务器端就不需要做任何的配置了。
+
+Vue的vant( UI )
+
+我们唯一要注意的是，不能再created()钩子中使用，因为this.$refs[formname]中的ref，一定要加载完后才能找到的。否则会报错说你resetFields()事件未定义。所以一定要在mounted()钩子中使用。
+
+
+MVC
+
+M: 
+Model 数据模型（专门用来操作数据，数据的CRUD）
+
+
+V：View 视图（对于前端来说，就是页面）
+
+
+C：Controller 控制器（是视图和数据模型沟通的桥梁，用于处理业务逻辑）
+
+?
+
+
+MVVM组成
+
+MVVM ===> M / V / VM
+
+M：model数据模型
+
+V：view视图
+
+VM：ViewModel 视图模型
+
+?
+
+优势对比
+
+MVC模式，将应用程序划分为三大部分，实现了职责分离
+
+在前端中经常要通过 JS代码 来进行一些逻辑操作，最终还要把这些逻辑操作的结果现在页面中。也就是需要频繁的操作DOM
+
+MVVM通过数据双向绑定让数据自动地双向同步
+
+?
+
+V（修改数据） -> M
+
+M（修改数据） -> V
+
+数据是核心
+
+Vue这种MVVM模式的框架，
+
+熟练React
+掌握Vue
+webpack
+Ajax的事件处理机制
+
+
+let code=('000000'+Math.floor(Math.random()*999999)).slice(-6); //六位验证码
+
+爬虫:
+var express = require('express');
+var router = express.Router();
+const querystring =require('querystring');
+const request =require('request');
+const cheerio =require('cheerio');
+function getHotMovie(url){
+    request(url,function (err,response,body) {
+        if(!err&&response.statusCode==200){
+            $=cheerio.load(body,{ decodeEntities: false });
+            var content=$(".am-list li a");
+            var length=content.length;
+            var list=[];
+            console.log(length);
+            while (length--){
+                var title=$(content[length]).attr('href');
+                title&&list.push(title);
+            }
+            console.info('热门电影：',list);
+        }else{
+            console.log("网页加载失败",err);
+        }
+    })
+}
+
+
+
+//转义字符解析
+		function escape2Html(str) {
+		 var arrEntities={'lt':'<','gt':'>','nbsp':' ','amp':'&','quot':'"'};
+		 return str.replace(/&(lt|gt|nbsp|amp|quot);/ig,function(all,t){return arrEntities[t];});
+		}
+
+
+
+mstsc /v: 192.168.1.250 /console
+https://ke.qq.com/course/315597?taid=2329422757941453
+递归
+$(window).on('load',function () {
+			$('div').eq(0).slideDown(600,function showDiv () {
+				$(this).next('div').slideDown(600,showDiv)
+			})
+		})
+
+
+图片的瀑布流
+window.onload=function(){
+    		var oBox=$('.box');//获取包裹每张图片的盒子
+			var hArr=[];//存放第一列图片高度的数组
+			var oBoxw=Math.floor($(window).width()/$(oBox).eq(0).outerWidth());//获取当前屏幕排列图片的列数
+			$('#main').css('width',$(oBox).eq(0).outerWidth()*oBoxw)//大盒子main的宽度设置为图片的宽度乘以图片列数
+			for(var i=0;i<oBox.length;i++){
+				if(i<oBoxw){
+					hArr.push($(oBox).eq(i).outerHeight());
+				}else{
+					var minH=Math.min.apply(null,hArr);//获取数组当中的高度最小值
+					var indexarr=arrIndex(hArr,minH);//高度最小值在数组中的下标
+					$(oBox).eq(i).css({
+						'position':'absolute',
+						'top':minH,//最小高度的图片高度
+						'left':$(oBox).eq(0).outerWidth()*indexarr
+					})
+					hArr[indexarr]+=$(oBox).eq(i).outerHeight();//在当前列最小高度数组下标加上下一张图片上来图片的高度
+				}
+			}
+			function arrIndex(arr,val){//求下标
+				for(var i in arr){
+					if(arr[i]==val){
+						return i;
+					}
+				}
+			}
+    	}
+
+
+
+
+
+
+var minH=Math.min.apply(null,hArr);//获取数组当中的最小值
+ function init() {
+            setInterval("changeimg()", 3000);
+        }
+
+        i = 2;
+        //轮播图片
+        function changeimg() {
+            i++;
+            var ban = document.getElementById("adv-banner");
+            ban.src = "images/banner" + i + ".png";
+            if (i === 6) {
+                i = 1;
+            }
+        }
+底部6个主页固定
+
+
+//检测用户屏幕视口宽度
+        var UIw = 414;
+        var prev_fs = 41.4;
+        window.onresize = function () {
+            var deviceWidth = document.documentElement.clientWidth;
+            var htmfs = deviceWidth * prev_fs / UIw + 'px';
+            document.documentElement.style.fontSize = htmfs;
+        };
+
+
+//运动函数
+function leftSty(obj,attr){
+			if(obj.currentStyle){
+				return obj.currentStyle[attr];
+			}else{
+				return getComputedStyle(obj)[attr]
+			}
+		}
+function move(obj,tag,stopValue,attr) {
+	// 初始值 500 20 - 初始值 8 500 +
+	tag = stopValue > parseInt(leftSty(obj,attr)) ? tag : -tag;
+	clearInterval(obj.timer);
+	obj.timer = setInterval(function () {
+	var speed = parseInt(leftSty(obj,attr)) + tag;
+	if(speed <= stopValue && tag < 0 || speed >= stopValue && tag>0){
+	speed = stopValue;
+	}
+	obj.style[attr] = speed + 'px';
+	if(speed == stopValue){
+	clearInterval(obj.timer);
+	}
+},50);
+}
+
+缓冲运动
+function move2(obj,attr,targe,num){
+	var time=setInterval(function(){
+		var nowl=parseInt(leftSty(obj,attr));
+		var step=(targe-nowl)/num;
+		var speed=step>0?Math.ceil(nowl+step):Math.floor(nowl+step);
+		if((speed<=targe && step<0)||(speed>=targe&&step>0)){
+			clearInterval(time);
+		}
+		obj.style[attr]=speed+'px';
+	},30)
+}
+
+淡入淡出
+function move2(obj,attr,targe,num){
+	var time=setInterval(function(){
+		var nowl=parseFloat(leftSty(obj,attr))*100;
+		var step=(targe-nowl)/num;
+		var speed=step>0?Math.ceil(nowl+step):Math.floor(nowl+step);
+		 if((speed<=targe && step<0)||(speed>=targe&&step>0)){
+		      clearInterval(time);
+		}
+		obj.style[attr]=speed/100;
+	},30)
+}
+//透明度与运动一起封装
+function move2(obj,attr,targe,num){
+	var time=setInterval(function(){
+		if(attr=='opacity'){
+			var nowl=parseFloat(leftSty(obj,attr))*100;
+		}else{
+			var nowl=parseInt(leftSty(obj,attr));
+		}
+		var step=(targe-nowl)/num;
+		var speed=step>0?Math.ceil(nowl+step):Math.floor(nowl+step);
+		if((speed<=targe && step<0)||(speed>=targe&&step>0)){
+			clearInterval(time);
+		}
+		if(attr=='opacity'){
+			obj.style[attr]=speed/100;
+		}else{
+			obj.style[attr]=speed+'px';
+		}
+	},30)
+}
+
+//cookie记住保存
+function setCookie(key, val, oDate) {
+	var nowDate = new Date();
+	if(oDate == 0) {
+		nowDate = 0;
+	} else {
+		nowDate.setSeconds(nowDate.getSeconds() + oDate);
+	}
+	document.cookie = key + '=' + val + ';expires=' + nowDate;
+}
+
+function getCookie(key) {
+	var oCookie = document.cookie;
+	var cookieArr = oCookie.split(';');
+	for(var i = 0; i < cookieArr.length; i++) {
+		var arr = cookieArr[i].split('=');
+		if(arr[0].trim() == key) {
+			return arr[1];
+		}
+	}
+	return false;
+}
+
+function removeCookie(key) {
+	setCookie(key, 1, -1);
+}
